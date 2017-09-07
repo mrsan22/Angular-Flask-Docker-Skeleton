@@ -1,0 +1,3 @@
+.git
+.dockerignore
+./app/project/main/static/node_modules

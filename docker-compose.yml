@@ -1,0 +1,30 @@
+# Run docker-compose build
+# Run docker-compose up
+# Live long and prosper
+
+version: '2'
+
+services:
+  nginx_demo:
+    container_name: nginx_container
+    restart: always
+    container_name: nginx
+    image: nginx
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    volumes:
+     - ./client/dist:/usr/share/nginx/html
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - flask_demo
+
+  flask_demo:
+    container_name: flask_demo_container
+    restart: always
+    image: flask
+    build: ./server
+    volumes:
+    - ./server/main:/usr/src/app
