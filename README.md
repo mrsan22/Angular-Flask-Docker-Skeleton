@@ -21,11 +21,12 @@ This file is used by the Docker to create the containers and run your app.
 For this seed project, I am using 2 Docker containers:
 * NGINX - Web Server
 * FLASK - Flask web application with *uwsgi* server.
+
 The two components are all created from Docker images that expand on the respective official images from Docker Hub. Each of these images are built using separate Dockerfiles. Docker Compose is then used to create all two containers and connect them correctly into a unified application.
 ### Working
 The request from an external user hits the *nginx* web server on port 80. Depending on the __URL__,the request is served using Angular code or it is sent to Flask web application. In this app, all request URL starting with */api* is sent to Flask web service. The Flask docker container is also running and it exposes port 5000. These setting are defined in *nginx.conf* file. In this way, nginx is aware of both Frontend and Backend services.
 ## Usage
-__NOTE__: Make sure you have Docker, node, and npm installed.
+__NOTE__: Make sure you have Docker, node, npm and angular-cli installed.
 * Clone this repository
 * Navigate to client directory and execute `ng build --prod` to create production build for Angular.
 * Then navigate back and execute following commands:
