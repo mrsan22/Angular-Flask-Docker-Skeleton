@@ -25,6 +25,8 @@ For this seed project, I am using 2 Docker containers:
 The two components are all created from Docker images that expand on the respective official images from Docker Hub. Each of these images are built using separate Dockerfiles. Docker Compose is then used to create all two containers and connect them correctly into a unified application.
 ### Working
 The request from an external user hits the *nginx* web server on port 80. Depending on the __URL__,the request is served using Angular code or it is sent to Flask web application. In this app, all request URL starting with */api* is sent to Flask web service. The Flask docker container is also running and it exposes port 5000. These setting are defined in *nginx.conf* file. In this way, nginx is aware of both Frontend and Backend services.
+### Basic Architecture Diagram
+![alt text](https://github.com/mrsan22/Angular-Flask-Docker-Skeleton/blob/master/architecture.png)
 ## Usage
 __NOTE__: Make sure you have Docker, node, npm and angular-cli installed.
 * Clone this repository
@@ -35,9 +37,6 @@ __NOTE__: Make sure you have Docker, node, npm and angular-cli installed.
  * Open Browser and type following URL:
   * `localhost` - It should display the default Angular app
   * `localhost/api` - It should display welcome message from Flask.
-
-## TODO
-* Add an architecture diagram
 
 This seed project is good for starting up with any Angular-Flask-Docker project, so check it out and feel free to fork, update, plug in your project etc. Let me know if you find any issues.
 
