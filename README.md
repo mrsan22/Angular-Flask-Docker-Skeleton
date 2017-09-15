@@ -40,3 +40,8 @@ __NOTE__: Make sure you have Docker, node, npm and angular-cli installed.
 
 This seed project is good for starting up with any Angular-Flask-Docker project, so check it out and feel free to fork, update, plug in your project etc. Let me know if you find any issues.
 
+### References
+I refered a lot of online blogs, github repos and stackoverflow questions, while I was working on to create this project. A big Thank You to all these people who take time from their regular work and write Blog, answers questions and post their code online, so that someone like me could learn from those posts and come up with something of their own. Special mention for these blog posts.
+* [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-14-04)
+* [Patrick Software Blog](http://www.patricksoftwareblog.com/how-to-use-docker-and-docker-compose-to-create-a-flask-application/)
+
