@@ -6,7 +6,7 @@ version: '2'
 
 services:
   nginx_demo:
-    container_name: nginx_container
+    container_name: nginx_demo_container
     restart: always
     container_name: nginx
     image: nginx
@@ -28,3 +28,19 @@ services:
     build: ./server
     volumes:
     - ./server/main:/usr/src/app
+
+  data:
+   container_name: app_data_demo_container
+   image: postgres:9.6
+   volumes:
+     - /var/lib/postgresql
+   command: "true"
+
+  postgres:
+   container_name: postgresql_demo_container
+   restart: always
+   build: ./postgresql
+   volumes_from:
+     - data
+   ports:
+     - "5432:5432"
