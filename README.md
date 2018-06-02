@@ -48,8 +48,7 @@ file. In this way, nginx is aware of both Frontend and Backend services. The Fla
 talks to the PostgreSQL database on port 5432 for any request that require database operations. 
 
 ### Basic Architecture Diagram
-![project architecture](https://github.com/mrsan22/Angular-Flask-Docker-Skeleton/blob/master
-/project_architecture.png)
+![project architecture](https://github.com/mrsan22/Angular-Flask-Docker-Skeleton/blob/master/project_architecture.png)
 
 ## Usage
 __NOTE__: Make sure you have Docker, node, npm and angular-cli installed. Check Angular 
