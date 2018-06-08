@@ -27,7 +27,7 @@ services:
     image: flask
     build: ./server
     volumes:
-    - ./server/main:/usr/src/app
+    - ./server:/usr/src/app/server
     env_file:
      - .env
 

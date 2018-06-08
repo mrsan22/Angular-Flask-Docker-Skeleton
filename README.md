@@ -3,7 +3,7 @@ Simple Angular-Flask seed project with Docker.
 
 This is the simple Angular-Flask web application skeleton. It is built with following components:
 * Angular (v6) - Frontend framework.
-* Flask(latest version) - Micro web framework (Python-3.6.2) for the backend.
+* Flask(1.0.2) - Micro web framework (Python-3.6.2) for the backend.
 * PostgreSQL - Database support. 
 * nginx - web server (It's also used for reverse proxy). External user hits the nginx which distributes the request between Frontend and Backend using url.
 * uwsgi - It's a WSGI server that help running web application written in Python. It comes with direct support for popular NGINX web server.
