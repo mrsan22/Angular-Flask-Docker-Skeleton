@@ -12,4 +12,4 @@ def hello():
 
 @route.route("/api/ping")
 def ping():
-    return jsonify({"status": 200})
+    return jsonify({"status": 200, "msg":"This message is coming from Flask backend!"})

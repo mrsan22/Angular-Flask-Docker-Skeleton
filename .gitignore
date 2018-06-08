@@ -13,4 +13,4 @@ __pycache__/
 client/node_modules
 
 # Environment variable
-.env
+#.env
