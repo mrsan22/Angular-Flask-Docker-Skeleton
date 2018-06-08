@@ -27,7 +27,9 @@ services:
     image: flask
     build: ./server
     volumes:
-    - ./server/main:/usr/src/app
+    - ./server:/usr/src/app/server
+    env_file:
+     - .env
 
   data:
    container_name: app_data_demo_container
@@ -44,3 +46,5 @@ services:
      - data
    ports:
      - "5432:5432"
+   env_file:
+     - .env

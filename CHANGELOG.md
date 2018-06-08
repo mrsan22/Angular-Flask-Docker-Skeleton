@@ -1,4 +1,19 @@
-## Angular-Flask-Docker v1.0.1 - 02/06/2018
+## Angular-Flask-Docker v2.0.0 - 06/08/2018
+### New Features:
+
+* Added `Blueprint` support for handling api routes.
+* Added `application factory` pattern to create Flask app.
+* Added `UnitTests` support to the seed project with few sample tests.
+* Usage of `.env` to set the environment variables.
+* Added sample code on Client side (Angular) to get the data from Flask backend.
+
+### Improvements:
+* Improved server side application structure to support different environment configs and large 
+scale application structure.
+* Complete `PostgreSQL` database support with sample table, db model and dummy data. An `init.sql` 
+script to create a db on container initialization.
+
+## Angular-Flask-Docker v1.0.1 - 06/02/2018
 
 ### New Features:
 * Added `PostgreSQL` database support to the seed project.
