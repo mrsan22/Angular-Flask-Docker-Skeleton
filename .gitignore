@@ -1,4 +1,3 @@
 .idea
 client/node_modules
 client/dist
-postgresql/Dockerfile
