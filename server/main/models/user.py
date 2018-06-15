@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
+from sqlalchemy import inspect
 
 from server.main import db
 from sqlalchemy.sql import func
@@ -17,17 +17,17 @@ class BaseModel(db.Model):
         """Define a base way to print models"""
         return '%s(%s)' % (self.__class__.__name__, {
             column: value
-            for column, value in self._to_dict().items()
+            for column, value in self.as_dict().items()
         })
 
-    def json(self):
-        """
-                Define a base way to jsonify models, dealing with datetime objects
-        """
-        return {
-            column: value if not isinstance(value, datetime.date) else value.strftime('%Y-%m-%d')
-            for column, value in self._to_dict().items()
-        }
+    # def _as_dict(self):
+    #     return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+    # Preferred way
+    # https://stackoverflow.com/questions/1958219/convert-sqlalchemy-row-object-to-python-dict
+    def as_dict(self):
+        return {c.key: getattr(self, c.key)
+                for c in inspect(self).mapper.column_attrs}
 
 
 class User(BaseModel, db.Model):
