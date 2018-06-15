@@ -1,4 +1,4 @@
-# Angular-Flask-Docker-Skeleton v2.0.0
+# Angular-Flask-Docker-Skeleton v2.0.1
 ### Simple Angular-Flask-PostgreSQL seed project with Docker.
 
 This is a simple Angular-Flask web application skeleton project with following key 
@@ -8,6 +8,8 @@ variable and `docker.compose.yml` files.
 * Designed for organizing large scale application structure. With the usage of `Blueprints`, 
 `application factory` and different configs, you can easily extend this seed project to any 
 Production ready application.
+* `Service` Class that encapsulates common SQLAlchemy operations to interact with data model by 
+exposing APIs.
 * Support Flask code Testing out of the box. For commands to test, see below.
 * Complete `PostgreSQL` database support with sample db, model and dummy data examples included in 
 the project.
@@ -17,6 +19,7 @@ It is built with following components:
 * Angular (v6) - Frontend framework.
 * Flask(1.0.2) - Micro web framework (Python-3.6.2) for the backend.
 * PostgreSQL - Database support. 
+* Flask-SQLAlchemy - Flask based ORM wrapper on SQLAlchemy.
 * nginx - web server (It's also used for reverse proxy). External user hits the nginx which distributes the request between Frontend and Backend using url.
 * uwsgi - It's a WSGI server that help running web application written in Python. It comes with direct support for popular NGINX web server.
 * Docker - Usage of Docker Compose to build and host the application.
@@ -24,7 +27,7 @@ It is built with following components:
 > NOTE: I have tagged this project at each release. So please refer to previous tags if you
  are looking for a simpler version of this seed project. For e.g., If you want to use 
 the seed project without database support please refer to [v1.0.0](https://github.com/mrsan22/Angular-Flask-Docker-Skeleton/tree/v1.0.0) of 
-the project under tags.
+the project under tags. Also refer [Changelog](https://github.com/mrsan22/Angular-Flask-Docker-Skeleton/blob/master/CHANGELOG.md) file for latest changes.
 
 ## Project Components (Directory Structure)
 
@@ -86,6 +89,7 @@ Prerequisites [here](https://github.com/angular/angular-cli#prerequisites).
   backend. 
   * `localhost/api` - It should display welcome message from Flask.
   * `localhost/api/ping` - To get a `json` from Flask.
+  * `http://localhost/api/users` - Fetches all users from `users` table.
 
 This seed project is good for starting up with any Angular-Flask-Docker project, so check it out and feel free to fork, update, plug in your project etc. Let me know if you find any issues.
 

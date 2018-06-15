@@ -1,3 +1,16 @@
+## Angular-Flask-Docker v2.0.1 - 06/15/2018
+### New Features:
+* Added `Service` based architecture that encapsulates common SQLAlchemy operations and exposes 
+API that interacts with the model. This way our `routes` functions becomes more concise and clear
+with just a call to respective Service API. This can be found under `services` directory.
+
+### Bug Fix:
+* Added `as_dict` method under models BaseModel class to convert the Model object into dict. 
+Fixed `__repr__` for the same.
+
+### Improvements:
+* Created a new `user` blueprint with user related routes and a new user_service file. 
+
 ## Angular-Flask-Docker v2.0.0 - 06/08/2018
 ### New Features:
 
