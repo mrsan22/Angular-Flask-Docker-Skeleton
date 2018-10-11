@@ -19,9 +19,16 @@ export class AppService {
     this.socket = socketIo('/websocket_test');
   }
 
+  public onPong(): Observable<any> {
+    return new Observable<any>(observer => {
+      this.socket.on('my_ping', (data: any) => console.log('On Pong', data));
+    });
+  }
+
   public send(message: any): void {
     console.log('Msg',message);
-    this.socket.emit('message', message);
+    this.socket.emit('message', {data: message['content']});
+    this.socket.emit('my_ping');
   }
 
   public onMessage(): Observable<any> {
@@ -30,7 +37,7 @@ export class AppService {
     });
   }
 
-  public onEvent(event: Event): Observable<any> {
+    public onEvent(event: Event): Observable<any> {
     return new Observable<Event>(observer => {
       this.socket.on(event, () => observer.next());
     });

@@ -11,7 +11,9 @@ from flask_socketio import SocketIO, emit
 
 from server.main.utils.common import register_blueprints
 from server.settings import config
-
+# from gevent import monkey
+#
+# monkey.patch_all()
 
 # instantiate the db
 db = SQLAlchemy()
