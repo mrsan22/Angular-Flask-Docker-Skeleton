@@ -6,3 +6,8 @@
   {{msg}}
 </div>
 
+<br/>
+<input maxlength="140"
+       placeholder="Type your message"
+       [(ngModel)]="messageContent"
+       (keyup.enter)="sendMessage(messageContent)">

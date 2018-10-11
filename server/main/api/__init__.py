@@ -8,7 +8,6 @@
 
 from server.main import create_app
 
-
 def create_app_blueprint(config):
     """
     Return the RMIS application instance.

@@ -70,3 +70,6 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+// Included to avoid socket.io `global` error.
+(window as any).global = window;
