@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AppService} from './app.service';
 
 @Component({
@@ -8,14 +8,14 @@ import {AppService} from './app.service';
 })
 
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'App!!';
   msg: string;
   ioConnection: any;
   messages = [];
-  action = Action;
-  user: User;
   messageContent: string;
+  isConnected: boolean;
+  clients = 0;
 
   constructor(private appService: AppService) {
   }
@@ -25,57 +25,48 @@ export class AppComponent implements OnInit {
     this.initIoConnection();
   }
 
+  ngOnDestroy() {
+    this.ioConnection.unsubscribe();
+  }
+
   private initIoConnection(): void {
     this.appService.initSocket();
 
-    this.ioConnection = this.appService.onMessage()
-      .subscribe((message: any) => {
-        this.messages.push(message);
-        console.log(this.messages);
-      });
 
     this.appService.onEvent(Event.CONNECT)
       .subscribe(() => {
+        this.isConnected = true;
         console.log('connected');
       });
 
+    this.ioConnection = this.appService.onMessage()
+      .subscribe((message: any) => {
+        if (message.hasOwnProperty('count')) {
+          console.log('Message', message)
+          this.clients = message['count'];
+        } else {
+          this.messages.push(message);
+        }
+        console.log(this.messages);
+      });
+
     this.appService.onEvent(Event.DISCONNECT)
-      .subscribe(() => {
+      .subscribe((data) => {
+        this.isConnected = false;
         console.log('disconnected');
       });
   }
 
-  public sendMessage(message: string): void {
+  public sendMessage(message: string, broadcast: boolean): void {
     if (!message) {
       return;
     }
-
     this.appService.send({
-      from: this.user,
-      content: message
+      from: 'user',
+      content: message,
+      isBroadcast: broadcast
     });
     this.messageContent = null;
-  }
-
-  public sendNotification(params: any, action: Action): void {
-    let message;
-
-    if (action === Action.JOINED) {
-      message = {
-        from: this.user,
-        action: action
-      }
-    } else if (action === Action.RENAME) {
-      message = {
-        action: action,
-        content: {
-          username: this.user.name,
-          previousUsername: params.previousUsername
-        }
-      };
-    }
-
-    this.appService.send(message);
   }
 }
 
@@ -84,14 +75,3 @@ export enum Event {
   DISCONNECT = 'disconnect'
 }
 
-export enum Action {
-  JOINED,
-  LEFT,
-  RENAME
-}
-
-export interface User {
-  id?: number;
-  name?: string;
-  avatar?: string;
-}

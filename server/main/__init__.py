@@ -7,13 +7,10 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO
 
 from server.main.utils.common import register_blueprints
 from server.settings import config
-# from gevent import monkey
-#
-# monkey.patch_all()
 
 # instantiate the db
 db = SQLAlchemy()

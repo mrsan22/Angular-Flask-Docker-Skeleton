@@ -1,13 +1,43 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!
+    Welcome to WebSocket test app!
   </h1>
-  {{msg}}
+  <br/>
+  <br/>
+  <span *ngIf="isConnected; else elseBlock">
+    <b>Hey there! You are connected to WebSocketserver!</b> <br/><br/>
+    <span style="text-align: center">Total Clients Connected: <b>{{clients}}</b></span>
+  </span>
+  <ng-template #elseBlock>
+    <b>Something went wrong..Not able to connect to WebSocket server!</b>
+  </ng-template>
+
+  <br/>
+  <br/>
+  <br/>
+
+  <input maxlength="140"
+       placeholder="Type your message"
+       [(ngModel)]="messageContent">
+  <br/>
+  <br/>
+  <div>
+    <button style="margin-right: 20px" type="submit"
+            (click)="sendMessage(messageContent, false)">Just
+      Me</button>
+    <button type="submit" (click)="sendMessage(messageContent, true)">Broadcast</button>
+  </div>
+
+  <br/>
+  <br/>
+
+  <div>
+    <span *ngFor="let msg of messages">
+      <p>{{msg['data']}}</p>
+    </span>
+  </div>
+
 </div>
 
-<br/>
-<input maxlength="140"
-       placeholder="Type your message"
-       [(ngModel)]="messageContent"
-       (keyup.enter)="sendMessage(messageContent)">
+
