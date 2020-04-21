@@ -1,6 +1,6 @@
-# AngularSeed
+# AngularFlaskDockerSeed v2.0.3
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.
 
 ## Development server
 
